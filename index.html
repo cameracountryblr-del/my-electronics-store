@@ -123,4 +123,104 @@
 
         let allProducts = [];
 
-        async function
+        async function fetchProducts() {
+            try {
+                const response = await fetch(SHEET_CSV_URL);
+                const csvData = await response.text();
+                Papa.parse(csvData, {
+                    header: true,
+                    dynamicTyping: true,
+                    complete: (results) => {
+                        allProducts = results.data.filter(p => p.ID);
+                        document.getElementById('item-total').innerText = `${allProducts.length} items`;
+                        renderSidebar();
+                        renderProducts(allProducts);
+                    }
+                });
+            } catch (e) {
+                document.getElementById('product-grid').innerHTML = "Error loading products.";
+            }
+        }
+
+        function renderProducts(products) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = products.map(p => `
+                <div class="card">
+                    <div class="img-container">
+                        <img src="${p.ImageURL || 'https://via.placeholder.com/200'}" alt="${p.Name}">
+                    </div>
+                    <div class="card-info">
+                        <div style="font-size:10px; color:#ff6600; font-weight:bold; margin-bottom:5px; text-transform:uppercase;">${p.Category}</div>
+                        <div style="font-size:14px; font-weight:bold; height:40px; overflow:hidden; margin-bottom:10px;">${p.Name}</div>
+                        <div class="card-price">₹${p.Price ? p.Price.toLocaleString('en-IN') : 'Contact'}</div>
+                        <button class="enquiry-btn" onclick="sendEnquiry('${p.Name}', '${p.Price}')">ENQUIRY ON WHATSAPP 📲</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function sendEnquiry(name, price) {
+            const cleanPrice = price ? `₹${price.toLocaleString('en-IN')}` : 'Price on request';
+            const msg = `*Product Enquiry*\n------------------\n*Item:* ${name}\n*Price:* ${cleanPrice}\n------------------\nHello Camera Country, I am interested in this product.`;
+            const whatsappUrl = `https://wa.me/${MY_PHONE_NUMBER}?text=${encodeURIComponent(msg)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function renderSidebar() {
+            const list = document.getElementById('category-list');
+            const cats = [...new Set(allProducts.map(p => p.Category))];
+            list.innerHTML = '<li class="cat-item" onclick="filterProducts(\'all\')">All Products</li>';
+            cats.forEach(c => { if(c) list.innerHTML += `<li class="cat-item" onclick="filterProducts('${c}')">${c}</li>`; });
+        }
+
+        function filterProducts(cat) {
+            document.getElementById('category-name').innerText = cat.toUpperCase();
+            const filtered = cat === 'all' ? allProducts : allProducts.filter(p => p.Category === cat);
+            renderProducts(filtered);
+            document.getElementById('item-total').innerText = `${filtered.length} items`;
+        }
+
+        fetchProducts();
+    </script>
+
+    <footer style="background: #1a1a1a; color: white; padding: 60px 5% 20px; margin-top: 50px; font-family: sans-serif;">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+            
+            <div>
+                <h3 style="color: #ff6600; font-size: 24px; margin-bottom: 15px;">CAMERA COUNTRY</h3>
+                <p style="font-size: 14px; line-height: 1.6; color: #bbb; margin-bottom: 20px;">
+                    Specialists in CCTV, Biometrics, and Networking Solutions. Authorised Dealer in SP Road, Bangalore.
+                </p>
+                <div style="display: flex; gap: 12px;">
+                    <a href="#" class="social-icon" style="background: #3b5998;">f</a>
+                    <a href="#" class="social-icon" style="background: #e4405f;">ig</a>
+                    <a href="https://wa.me/919513533180" class="social-icon" style="background: #25d366;">wa</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="margin-bottom: 20px; border-left: 3px solid #ff6600; padding-left: 10px;">Contact Details</h4>
+                <p style="font-size: 14px; color: #bbb; line-height: 1.8;">
+                    📍 GROUND FLOOR, NO.8, 1ST CROSS ROAD, <br>P.V.N.LANE, THIGALARPET, S.P ROAD, <br>BANGALORE - 560002
+                </p>
+                <p style="font-size: 14px; color: #bbb; margin-top: 10px;">📞 +91 95135 33180</p>
+                <p style="font-size: 14px; color: #bbb;">✉️ cameracountryblr@gmail.com</p>
+            </div>
+
+            <div>
+                <h4 style="margin-bottom: 20px; border-left: 3px solid #ff6600; padding-left: 10px;">Business Hours</h4>
+                <p style="font-size: 14px; color: #bbb; line-height: 2;">
+                    Monday - Saturday: 10:30 AM - 8:30 PM<br>
+                    Sunday: Holiday (Support on WhatsApp)
+                </p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px; border-top: 1px solid #333; padding-top: 20px;">
+            <p style="font-size: 13px; color: #777;">
+                &copy; 2026 <strong>Camera Country</strong>. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
