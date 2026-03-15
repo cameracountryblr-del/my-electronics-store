@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camera Country | CCTV & Electronics</title>
+    <title>Camera Country | CCTV & Electronics SP Road</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     
     <style>
@@ -37,12 +37,13 @@
         .enquiry-btn { background: #25d366; color: white; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: 0.3s; text-decoration: none; font-size: 14px; }
         .enquiry-btn:hover { background: #128c7e; transform: scale(1.02); }
 
-        /* BANNER CLASSES */
         .banner-row { max-width: 1200px; margin: 20px auto; padding: 0 15px; display: grid; gap: 20px; }
         .small-banners { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-        .banner-card { border-radius: 8px; overflow: hidden; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; }
-        .banner-card:hover { transform: scale(1.01); }
+        .banner-card { border-radius: 8px; overflow: hidden; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; }
         .banner-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .social-icon { text-decoration: none; color: white; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold; transition: 0.3s; }
+        .social-icon:hover { transform: translateY(-3px); opacity: 0.9; }
 
         @media (max-width: 768px) {
             .main-container { flex-direction: column; }
@@ -61,10 +62,10 @@
 
     <header>
         <a href="/" class="logo">
-            <img src="logo.png" alt="Camera Country Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/150x50?text=CAMERA+COUNTRY'">
+            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/50x50?text=CC'">
             <div class="logo-text">CAMERA <span style="color:#ff6600">COUNTRY</span></div>
         </a>
-        <div style="font-size: 13px; font-weight: bold; color: #004a99; border: 1px solid #004a99; padding: 5px 10px; border-radius: 20px;">WHOLESALE STORE</div>
+        <div style="font-size: 12px; font-weight: bold; color: #004a99; border: 1px solid #004a99; padding: 5px 12px; border-radius: 20px;">WHOLESALE STORE</div>
     </header>
 
     <section class="banner-row">
@@ -73,7 +74,7 @@
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,74,153,0.8), transparent); display: flex; align-items: center; padding: 40px; color: white;">
                 <div>
                     <h1 style="font-size: clamp(24px, 5vw, 36px); font-weight: 800; margin-bottom: 10px;">ADVANCED SECURITY SOLUTIONS</h1>
-                    <p style="font-size: 18px; margin-bottom: 20px;">Premium CCTV at SP Road Prices.</p>
+                    <p style="font-size: 18px; margin-bottom: 20px;">Premium CCTV at SP Road Wholesale Prices.</p>
                     <a href="#product-grid" style="background: #ff6600; color: white; text-decoration:none; padding: 12px 30px; border-radius: 5px; font-weight: bold; display:inline-block;">EXPLORE RANGE</a>
                 </div>
             </div>
@@ -81,27 +82,18 @@
     </section>
 
     <section class="banner-row small-banners">
-        <div style="height: 180px; background: #004a99;" class="banner-card">
-            <div style="padding: 30px; color: white;">
-                <h3 style="font-size: 22px;">FREE INSTALLATION 🛠️</h3>
-                <p style="opacity: 0.9; margin-top: 10px;">On complete set of 4/8 Cameras.</p>
-                <div style="margin-top: 15px; font-weight: bold; background: rgba(255,255,255,0.2); display: inline-block; padding: 5px 15px; border-radius: 4px;">OFFER 2026</div>
+        <div style="height: 160px; background: #004a99;" class="banner-card">
+            <div style="padding: 25px; color: white;">
+                <h3>FREE INSTALLATION 🛠️</h3>
+                <p style="opacity: 0.9; font-size: 14px; margin-top: 8px;">On complete set of 4/8 Cameras.</p>
+                <div style="margin-top: 15px; font-size: 12px; font-weight: bold; background: rgba(255,255,255,0.2); display: inline-block; padding: 4px 12px; border-radius: 4px;">OFFER 2026</div>
             </div>
         </div>
-        <div style="height: 180px; background: #ff6600;" class="banner-card">
-            <div style="padding: 30px; color: white;">
-                <h3 style="font-size: 22px;">WHOLESALE PRICES 📦</h3>
-                <p style="opacity: 0.9; margin-top: 10px;">Bulk orders for dealers & offices.</p>
-                <div style="margin-top: 15px; font-weight: bold; background: rgba(0,0,0,0.2); display: inline-block; padding: 5px 15px; border-radius: 4px;">ENQUIRE NOW</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="banner-row">
-        <div style="height: 120px; background: #333; display: flex; align-items: center; justify-content: center; text-align: center;" class="banner-card">
-            <div style="color: white; padding: 0 20px;">
-                <h2 style="font-size: 20px; letter-spacing: 1px;">CP PLUS | HIKVISION | DAHUA | BIOMETRICS</h2>
-                <p style="color: #ff6600; font-weight: bold; margin-top: 5px;">AUTHORISED PREMIUM PARTNER</p>
+        <div style="height: 160px; background: #ff6600;" class="banner-card">
+            <div style="padding: 25px; color: white;">
+                <h3>WHOLESALE DEALS 📦</h3>
+                <p style="opacity: 0.9; font-size: 14px; margin-top: 8px;">Special pricing for dealers.</p>
+                <div style="margin-top: 15px; font-size: 12px; font-weight: bold; background: rgba(0,0,0,0.1); display: inline-block; padding: 4px 12px; border-radius: 4px;">GET QUOTE</div>
             </div>
         </div>
     </section>
@@ -131,85 +123,4 @@
 
         let allProducts = [];
 
-        async function fetchProducts() {
-            try {
-                const response = await fetch(SHEET_CSV_URL);
-                const csvData = await response.text();
-                Papa.parse(csvData, {
-                    header: true,
-                    dynamicTyping: true,
-                    complete: (results) => {
-                        allProducts = results.data.filter(p => p.ID);
-                        document.getElementById('item-total').innerText = `${allProducts.length} items`;
-                        renderSidebar();
-                        renderProducts(allProducts);
-                    }
-                });
-            } catch (e) {
-                document.getElementById('product-grid').innerHTML = "Error loading products.";
-            }
-        }
-
-        function renderProducts(products) {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = products.map(p => `
-                <div class="card">
-                    <div class="img-container">
-                        <img src="${p.ImageURL || 'https://via.placeholder.com/200'}" alt="${p.Name}">
-                    </div>
-                    <div class="card-info">
-                        <div style="font-size:10px; color:#ff6600; font-weight:bold; margin-bottom:5px; text-transform:uppercase;">${p.Category}</div>
-                        <div style="font-size:14px; font-weight:bold; height:40px; overflow:hidden; margin-bottom:10px;">${p.Name}</div>
-                        <div class="card-price">₹${p.Price ? p.Price.toLocaleString('en-IN') : 'Contact'}</div>
-                        <button class="enquiry-btn" onclick="sendEnquiry('${p.Name}', '${p.Price}')">ENQUIRY ON WHATSAPP 📲</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function sendEnquiry(name, price) {
-            const msg = `*Product Enquiry*\n------------------\n*Item:* ${name}\n*Price:* ₹${price}\n------------------\nHello Camera Country, I am interested in this product.`;
-            window.open(`https://wa.me/${MY_PHONE_NUMBER}?text=${encodeURIComponent(msg)}`);
-        }
-
-        function renderSidebar() {
-            const list = document.getElementById('category-list');
-            const cats = [...new Set(allProducts.map(p => p.Category))];
-            list.innerHTML = '<li class="cat-item" onclick="filterProducts(\'all\')">All Products</li>';
-            cats.forEach(c => {
-                if(c) list.innerHTML += `<li class="cat-item" onclick="filterProducts('${c}')">${c}</li>`;
-            });
-        }
-
-        function filterProducts(cat) {
-            document.getElementById('category-name').innerText = cat.toUpperCase();
-            const filtered = cat === 'all' ? allProducts : allProducts.filter(p => p.Category === cat);
-            renderProducts(filtered);
-            document.getElementById('item-total').innerText = `${filtered.length} items`;
-        }
-
-        fetchProducts();
-    </script>
-
-    <footer style="background: #1a1a1a; color: white; padding: 50px 5%; margin-top: 50px; font-family: sans-serif;">
-        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
-            <div>
-                <h3 style="color: #ff6600; font-size: 24px; margin-bottom: 15px;">CAMERA COUNTRY</h3>
-                <p style="font-size: 14px; line-height: 1.6; color: #bbb;">Specialists in CCTV, Biometrics, and Networking Solutions in SP Road.</p>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 20px; border-left: 3px solid #ff6600; padding-left: 10px;">Contact Details</h4>
-                <p style="font-size: 14px; color: #bbb; line-height: 1.8;">
-                    📍 NO.8, 1ST CROSS ROAD, P.V.N.LANE, THIGALARPET, S.P ROAD, BANGALORE<br>
-                    📞 +91 95135 33180<br>
-                    ✉️ cameracountryblr@gmail.com
-                </p>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 20px; border-left: 3px solid #ff6600; padding-left: 10px;">Business Hours</h4>
-                <p style="font-size: 14px; color: #bbb;">Mon - Sat: 10:30 AM - 8:30 PM<br>Sunday: Holiday</p>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+        async function
