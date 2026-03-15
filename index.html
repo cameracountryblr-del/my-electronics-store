@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MDR Style Electronics | Complete Package</title>
+    <title>Camera Country | CCTV & Electronics</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     
     <style>
@@ -11,56 +11,63 @@
         body { background-color: #f4f7f6; color: #333; overflow-x: hidden; }
         
         .top-bar { background: #004a99; color: white; padding: 8px 5%; display: flex; justify-content: space-between; font-size: 12px; }
-        header { background: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 3px solid #ff6600; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .logo { font-size: 24px; font-weight: bold; color: #004a99; display: flex; align-items: center; gap: 10px; }
+        header { background: white; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 3px solid #ff6600; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         
+        /* LOGO STYLE */
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { height: 50px; width: auto; object-fit: contain; }
+        .logo-text { font-size: 22px; font-weight: bold; color: #004a99; }
+
         .main-container { display: flex; max-width: 1200px; margin: 20px auto; gap: 20px; padding: 0 15px; align-items: flex-start; }
         
         aside { width: 260px; flex-shrink: 0; }
         .sidebar-box { background: white; padding: 20px; border-radius: 5px; border: 1px solid #ddd; position: sticky; top: 100px; }
         .cat-item { padding: 10px 0; border-bottom: 1px solid #eee; cursor: pointer; color: #555; list-style: none; transition: 0.2s; }
-        .cat-item:hover { color: #004a99; padding-left: 5px; font-weight: bold; }
+        .cat-item:hover { color: #ff6600; padding-left: 5px; font-weight: bold; }
 
         .content-area { flex-grow: 1; width: 100%; }
         .grid-header { background: white; padding: 15px; border-radius: 5px; border: 1px solid #ddd; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; width: 100%; }
         
         .card { background: white; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s; height: 100%; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); border-color: #004a99; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); border-color: #ff6600; }
         .img-container { height: 200px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 15px; border-bottom: 1px solid #f0f0f0; }
         .img-container img { max-height: 100%; max-width: 100%; object-fit: contain; }
+        
         .card-info { padding: 15px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
         .card-price { font-size: 20px; color: #004a99; font-weight: bold; margin: 10px 0; }
-        .add-btn { background: #004a99; color: white; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .add-btn:hover { background: #ff6600; }
+        
+        /* ENQUIRY BUTTON */
+        .enquiry-btn { background: #25d366; color: white; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: 0.3s; text-decoration: none; font-size: 14px; }
+        .enquiry-btn:hover { background: #128c7e; transform: scale(1.02); }
 
-        #cart-sidebar { position: fixed; right: 0; top: 0; height: 100%; width: 350px; background: white; box-shadow: -5px 0 15px rgba(0,0,0,0.2); z-index: 200; transform: translateX(100%); transition: 0.3s; display: flex; flex-direction: column; }
-        .cart-open { transform: translateX(0) !important; }
+        footer a:hover { color: #ff6600 !important; }
 
         @media (max-width: 768px) {
             .main-container { flex-direction: column; }
             aside { width: 100%; }
             .sidebar-box { position: static; }
-            #cart-sidebar { width: 100%; }
+            .top-bar { flex-direction: column; text-align: center; gap: 5px; }
         }
     </style>
 </head>
 <body>
 
     <div class="top-bar">
-        <span>Authorized Electronics Dealer</span>
-        <span>📞 +91 9000000000 | 📍 Mee Ooru Shop Address</span>
+        <span>Authorized CCTV & Biometrics Dealer</span>
+        <span>📞 +91 9000000000 | 📍 Bengaluru, Karnataka</span>
     </div>
 
     <header>
-        <div class="logo">
-            <div style="background:#004a99; color:white; padding:5px 12px; border-radius:4px;">M</div>
-            MDR <span style="color:#333">ELECTRONICS</span>
-        </div>
-        <div style="cursor:pointer; padding: 10px; background: #f0f7ff; border-radius: 50%;" onclick="toggleCart()">
-            🛒 <span id="cart-count" style="background:#ff6600; color:white; border-radius:50%; padding:2px 7px; font-size:11px; position:absolute; margin-top:-15px; margin-left:15px; font-weight:bold;">0</span>
+        <a href="/" class="logo">
+            <img src="logo.png" alt="Camera Country Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/150x50?text=CAMERA+COUNTRY'">
+            <div class="logo-text">CAMERA <span style="color:#ff6600">COUNTRY</span></div>
+        </a>
+        <div style="font-size: 13px; font-weight: bold; color: #004a99; border: 1px solid #004a99; padding: 5px 10px; border-radius: 20px;">
+            WHOLESALE STORE
         </div>
     </header>
+
     <section style="max-width: 1200px; margin: 20px auto; padding: 0 15px;">
         <div style="width: 100%; height: 350px; background: #eee; border-radius: 8px; overflow: hidden; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
             <img src="https://images.unsplash.com/photo-1557597774-9d2739f85a76?auto=format&fit=crop&q=80&w=1200" 
@@ -68,20 +75,11 @@
             
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,74,153,0.8), transparent); display: flex; align-items: center; padding-left: 50px; color: white;">
                 <div style="max-width: 500px;">
-                    <h1 style="font-size: 36px; font-weight: 800; margin-bottom: 10px; line-height: 1.2;">LATEST CCTV & <br>BIOMETRIC SOLUTIONS</h1>
-                    <p style="font-size: 18px; margin-bottom: 25px; opacity: 0.9;">Professional Grade Accessories at Wholesale Prices.</p>
-                    <button style="background: #ff6600; color: white; border: none; padding: 12px 35px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='#e65c00'" onmouseout="this.style.background='#ff6600'">SHOP NOW</button>
+                    <h1 style="font-size: 36px; font-weight: 800; margin-bottom: 10px; line-height: 1.2;">ADVANCED SECURITY SOLUTIONS</h1>
+                    <p style="font-size: 18px; margin-bottom: 25px; opacity: 0.9;">High-Quality CCTV & Biometrics at Factory Prices.</p>
+                    <a href="#product-grid" style="background: #ff6600; color: white; text-decoration:none; padding: 12px 35px; border-radius: 5px; font-weight: bold; display:inline-block;">BROWSE PRODUCTS</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section style="max-width: 1200px; margin: 0 auto 30px auto; padding: 0 15px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-        <div style="height: 140px; background: #004a99; border-radius: 8px; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            PREMIUM CONNECTORS 🔌
-        </div>
-        <div style="height: 140px; background: #333; border-radius: 8px; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            HIGH SPEED CABLES 🧵
         </div>
     </section>
 
@@ -97,7 +95,7 @@
 
         <div class="content-area">
             <div class="grid-header">
-                <h2 id="category-name" style="font-size: 18px; color: #004a99;">ALL PRODUCTS</h2>
+                <h2 id="category-name" style="font-size: 18px; color: #004a99; text-transform: uppercase;">ALL PRODUCTS</h2>
                 <span id="item-total" style="color:#777; font-size:13px; font-weight:bold;">0 items</span>
             </div>
 
@@ -106,27 +104,12 @@
         </div>
     </div>
 
-    <div id="cart-sidebar">
-        <div style="background:#004a99; color:white; padding:20px; display:flex; justify-content:space-between; align-items:center;">
-            <h3>SHOPPING CART</h3>
-            <button onclick="toggleCart()" style="background:none; border:none; color:white; font-size:28px; cursor:pointer;">&times;</button>
-        </div>
-        <div id="cart-items" style="flex-grow:1; overflow-y:auto; padding:20px;"></div>
-        <div style="padding:20px; border-top:1px solid #ddd;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:20px; font-size:20px; font-weight:bold;">
-                <span>Total Amount:</span>
-                <span id="cart-total" style="color:#004a99;">₹0</span>
-            </div>
-            <button onclick="checkoutWhatsApp()" style="background:#25d366; color:white; width:100%; padding:16px; border:none; border-radius:6px; font-size:16px; font-weight:bold; cursor:pointer; box-shadow: 0 4px 10px rgba(37,211,102,0.3);">ORDER VIA WHATSAPP 📲</button>
-        </div>
-    </div>
-
     <script>
+        // REPLACE WITH YOUR ACTUAL SHEET URL & PHONE NUMBER
         const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT9BMeV7ru67VCJZ2W6gcVSKDbHvJPOFeOopi5dQRYtfU2yCSJQoJDXWXKCHKRAb3wOjW5ZzUS1Rfdp/pub?output=csv'; 
         const MY_PHONE_NUMBER = '919000000000'; 
 
         let allProducts = [];
-        let cart = [];
 
         async function fetchProducts() {
             try {
@@ -157,11 +140,16 @@
                     <div class="card-info">
                         <div style="font-size:10px; color:#ff6600; font-weight:bold; margin-bottom:5px; text-transform:uppercase;">${p.Category}</div>
                         <div style="font-size:14px; font-weight:bold; height:40px; overflow:hidden; margin-bottom:10px;">${p.Name}</div>
-                        <div class="card-price">₹${p.Price.toLocaleString('en-IN')}</div>
-                        <button class="add-btn" onclick="addToCart(${p.ID})">ADD TO CART</button>
+                        <div class="card-price">₹${p.Price ? p.Price.toLocaleString('en-IN') : 'Contact'}</div>
+                        <button class="enquiry-btn" onclick="sendEnquiry('${p.Name}', '${p.Price}')">ENQUIRY ON WHATSAPP 📲</button>
                     </div>
                 </div>
             `).join('');
+        }
+
+        function sendEnquiry(name, price) {
+            const msg = `*Product Enquiry*\n------------------\n*Item:* ${name}\n*Price:* ₹${price}\n------------------\nHello Camera Country, I am interested in this product. Please share more details.`;
+            window.open(`https://wa.me/${MY_PHONE_NUMBER}?text=${encodeURIComponent(msg)}`);
         }
 
         function renderSidebar() {
@@ -169,7 +157,7 @@
             const cats = [...new Set(allProducts.map(p => p.Category))];
             list.innerHTML = '<li class="cat-item" onclick="filterProducts(\'all\')">All Products</li>';
             cats.forEach(c => {
-                list.innerHTML += `<li class="cat-item" onclick="filterProducts('${c}')">${c}</li>`;
+                if(c) list.innerHTML += `<li class="cat-item" onclick="filterProducts('${c}')">${c}</li>`;
             });
         }
 
@@ -180,46 +168,38 @@
             document.getElementById('item-total').innerText = `${filtered.length} items`;
         }
 
-        function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('cart-open'); }
-
-        function addToCart(id) {
-            const p = allProducts.find(x => x.ID === id);
-            const inCart = cart.find(x => x.ID === id);
-            if (inCart) inCart.qty++; else cart.push({...p, qty: 1});
-            updateUI();
-            document.getElementById('cart-sidebar').classList.add('cart-open');
-        }
-
-        function updateUI() {
-            document.getElementById('cart-count').innerText = cart.reduce((s, i) => s + i.qty, 0);
-            const total = cart.reduce((s, i) => s + (i.Price * i.qty), 0);
-            document.getElementById('cart-total').innerText = `₹${total.toLocaleString('en-IN')}`;
-            document.getElementById('cart-items').innerHTML = cart.map(i => `
-                <div style="display:flex; gap:12px; border-bottom:1px solid #eee; padding:12px 0; align-items:center;">
-                    <img src="${i.ImageURL}" style="width:50px; height:50px; object-fit:contain; border:1px solid #eee; border-radius:4px;">
-                    <div style="flex-grow:1;">
-                        <div style="font-size:12px; font-weight:bold; color:#333;">${i.Name}</div>
-                        <div style="color:#004a99; font-size:13px; font-weight:bold; margin-top:4px;">₹${i.Price} x ${i.qty}</div>
-                    </div>
-                    <button onclick="removeFromCart(${i.ID})" style="color:#ff4d4d; border:none; background:none; cursor:pointer; font-size:18px;">&times;</button>
-                </div>
-            `).join('');
-        }
-
-        function removeFromCart(id) {
-            cart = cart.filter(x => x.ID !== id);
-            updateUI();
-        }
-
-        function checkoutWhatsApp() {
-            if (cart.length === 0) return alert("Cart khali ga undi!");
-            let msg = `*MDR STORE - NEW ORDER*\n----------------------\n`;
-            cart.forEach(i => msg += `✅ ${i.Name}\n   Qty: ${i.qty} | Price: ₹${i.Price * i.qty}\n\n`);
-            msg += `----------------------\n*TOTAL: ${document.getElementById('cart-total').innerText}*`;
-            window.open(`https://wa.me/${MY_PHONE_NUMBER}?text=${encodeURIComponent(msg)}`);
-        }
-
         fetchProducts();
     </script>
+
+    <footer style="background: #1a1a1a; color: white; padding: 50px 5%; margin-top: 50px; font-family: sans-serif;">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+            <div>
+                <h3 style="color: #ff6600; font-size: 24px; margin-bottom: 15px;">CAMERA COUNTRY</h3>
+                <p style="font-size: 14px; line-height: 1.6; color: #bbb;">
+                    Specializing in high-end CCTV Surveillance, Biometric Attendance Systems, and Professional Networking Accessories. Wholesale prices with premium support.
+                </p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 20px; border-left: 3px solid #ff6600; padding-left: 10px;">Quick Links</h4>
+                <ul style="list-style: none; padding: 0; font-size: 14px; line-height: 2.5;">
+                    <li><a href="#" style="color: #bbb; text-decoration: none;">Home</a></li>
+                    <li><a href="#product-grid" style="color: #bbb; text-decoration: none;">All Products</a></li>
+                    <li><a href="https://wa.me/919000000000" style="color: #bbb; text-decoration: none;">WhatsApp Support</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 20px; border-left: 3px solid #ff6600; padding-left: 10px;">Visit Our Store</h4>
+                <p style="font-size: 14px; color: #bbb; line-height: 1.8;">
+                    📍 No. 123, SP Road, Bengaluru, Karnataka<br>
+                    📞 Phone: +91 9000000000<br>
+                    ✉️ Email: info@cameracountry.in<br>
+                    ⏰ Mon-Sat: 10:30 AM - 8:30 PM
+                </p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px; border-top: 1px solid #333; padding-top: 20px; font-size: 12px; color: #777;">
+            © 2026 Camera Country. Developed for Professional Security Services.
+        </div>
+    </footer>
 </body>
 </html>
