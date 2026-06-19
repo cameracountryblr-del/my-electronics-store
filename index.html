@@ -113,7 +113,7 @@
                 <h2 id="category-name" style="font-size: 18px; color: #004a99; text-transform: uppercase;">ALL PRODUCTS</h2>
                 <span id="item-total" style="color:#777; font-size:13px; font-weight:bold;">0 items</span>
             </div>
-            <div id="product-grid" class="product-grid"></div>
+            <div id="product-grid" class="product-grid">Loading products...</div>
         </div>
     </div>
 
@@ -123,11 +123,13 @@
 
         let allProducts = [];
 
-        // Function to convert Drive Link to Direct Image Link
+        // Updated Function to fix Google Drive Image Loading Issue
         function formatDriveImageUrl(url) {
             if (!url) return 'https://via.placeholder.com/200?text=No+Image';
             
-            // If it's a direct drive file link
+            // Clean space or line breaks if any
+            url = url.trim();
+
             if (url.includes('drive.google.com')) {
                 let fileId = "";
                 if (url.includes('/d/')) {
@@ -137,50 +139,66 @@
                 }
                 
                 if (fileId) {
-                    return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
+                    // Using the more stable uc?export=view layout
+                    return `https://docs.google.com/uc?export=view&id=${fileId}`;
                 }
             }
-            return url; // Return original if not a drive link or can't parse
+            return url;
         }
 
         async function fetchProducts() {
             try {
-                const response = await fetch(SHEET_CSV_URL);
+                // Added cache buster to fetch fresh data from sheet
+                const response = await fetch(`${SHEET_CSV_URL}&v=${new Date().getTime()}`);
                 const csvData = await response.text();
                 Papa.parse(csvData, {
                     header: true,
+                    skipEmptyLines: true,
                     dynamicTyping: true,
                     complete: (results) => {
-                        allProducts = results.data.filter(p => p.ID);
+                        // Support both capitalized or normal key names
+                        allProducts = results.data.filter(p => p.ID || p.id);
+                        if(allProducts.length === 0) {
+                            document.getElementById('product-grid').innerHTML = "No active products found in the sheet.";
+                            return;
+                        }
                         document.getElementById('item-total').innerText = `${allProducts.length} items`;
                         renderSidebar();
                         renderProducts(allProducts);
                     }
                 });
             } catch (e) {
-                document.getElementById('product-grid').innerHTML = "Error loading products.";
+                console.error(e);
+                document.getElementById('product-grid').innerHTML = "Error loading products from Google Sheets.";
             }
         }
 
         function renderProducts(products) {
             const grid = document.getElementById('product-grid');
-            grid.innerHTML = products.map(p => `
-                <div class="card">
-                    <div class="img-container">
-                        <img src="${formatDriveImageUrl(p.ImageURL)}" alt="${p.Name}" onerror="this.src='https://via.placeholder.com/200?text=Image+Error'">
+            grid.innerHTML = products.map(p => {
+                const imgUrl = p.ImageURL || p.imageurl || p.Image || '';
+                const name = p.Name || p.name || 'Unnamed Product';
+                const cat = p.Category || p.category || 'General';
+                const price = p.Price || p.price;
+
+                return `
+                    <div class="card">
+                        <div class="img-container">
+                            <img src="${formatDriveImageUrl(imgUrl)}" alt="${name}" onerror="this.src='https://via.placeholder.com/200?text=Image+Error'">
+                        </div>
+                        <div class="card-info">
+                            <div style="font-size:10px; color:#ff6600; font-weight:bold; margin-bottom:5px; text-transform:uppercase;">${cat}</div>
+                            <div style="font-size:14px; font-weight:bold; height:40px; overflow:hidden; margin-bottom:10px;">${name}</div>
+                            <div class="card-price">${price ? '₹' + price.toLocaleString('en-IN') : 'Contact'}</div>
+                            <button class="enquiry-btn" onclick="sendEnquiry('${name}', '${price || ''}')">ENQUIRY ON WHATSAPP 📲</button>
+                        </div>
                     </div>
-                    <div class="card-info">
-                        <div style="font-size:10px; color:#ff6600; font-weight:bold; margin-bottom:5px; text-transform:uppercase;">${p.Category}</div>
-                        <div style="font-size:14px; font-weight:bold; height:40px; overflow:hidden; margin-bottom:10px;">${p.Name}</div>
-                        <div class="card-price">₹${p.Price ? p.Price.toLocaleString('en-IN') : 'Contact'}</div>
-                        <button class="enquiry-btn" onclick="sendEnquiry('${p.Name}', '${p.Price}')">ENQUIRY ON WHATSAPP 📲</button>
-                    </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function sendEnquiry(name, price) {
-            const cleanPrice = price ? `₹${price.toLocaleString('en-IN')}` : 'Price on request';
+            const cleanPrice = price ? `₹${parseInt(price).toLocaleString('en-IN')}` : 'Price on request';
             const msg = `*Product Enquiry*\n------------------\n*Item:* ${name}\n*Price:* ${cleanPrice}\n------------------\nHello Camera Country, I am interested in this product.`;
             const whatsappUrl = `https://wa.me/${MY_PHONE_NUMBER}?text=${encodeURIComponent(msg)}`;
             window.open(whatsappUrl, '_blank');
@@ -188,14 +206,14 @@
 
         function renderSidebar() {
             const list = document.getElementById('category-list');
-            const cats = [...new Set(allProducts.map(p => p.Category))];
+            const cats = [...new Set(allProducts.map(p => p.Category || p.category))];
             list.innerHTML = '<li class="cat-item" onclick="filterProducts(\'all\')">All Products</li>';
             cats.forEach(c => { if(c) list.innerHTML += `<li class="cat-item" onclick="filterProducts('${c}')">${c}</li>`; });
         }
 
         function filterProducts(cat) {
             document.getElementById('category-name').innerText = cat.toUpperCase();
-            const filtered = cat === 'all' ? allProducts : allProducts.filter(p => p.Category === cat);
+            const filtered = cat === 'all' ? allProducts : allProducts.filter(p => (p.Category || p.category) === cat);
             renderProducts(filtered);
             document.getElementById('item-total').innerText = `${filtered.length} items`;
         }
