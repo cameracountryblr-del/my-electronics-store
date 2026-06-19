@@ -17,6 +17,25 @@
         .logo-img { height: 50px; width: auto; object-fit: contain; }
         .logo-text { font-size: 22px; font-weight: bold; color: #004a99; }
 
+        /* CAROUSEL BANNER STYLES */
+        .banner-carousel { max-width: 1200px; margin: 20px auto; padding: 0 15px; position: relative; height: 380px; overflow: hidden; }
+        .carousel-container { width: 100%; height: 100%; position: relative; border-radius: 8px; overflow: hidden; }
+        .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out; z-index: 1; }
+        .carousel-slide.active { opacity: 1; z-index: 2; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        
+        .carousel-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,74,153,0.85), transparent); display: flex; align-items: center; padding: 40px; color: white; }
+        .carousel-content { max-width: 600px; }
+        .banner-badge { background: #ff6600; color: white; padding: 4px 12px; font-size: 11px; font-weight: bold; border-radius: 3px; display: inline-block; margin-bottom: 12px; letter-spacing: 1px; }
+        .carousel-content h1 { font-size: clamp(22px, 4vw, 36px); font-weight: 800; margin-bottom: 10px; line-height: 1.2; text-transform: uppercase; }
+        .carousel-content p { font-size: clamp(14px, 2vw, 18px); margin-bottom: 25px; opacity: 0.95; }
+        .banner-btn { background: #ff6600; color: white; text-decoration: none; padding: 12px 30px; border-radius: 4px; font-weight: bold; display: inline-block; transition: 0.3s; font-size: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .banner-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+        
+        .carousel-dots { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
+        .dot { width: 10px; height: 10px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; transition: 0.3s; }
+        .dot.active { background: white; width: 24px; border-radius: 10px; }
+
         .main-container { display: flex; max-width: 1200px; margin: 20px auto; gap: 20px; padding: 0 15px; align-items: flex-start; }
         aside { width: 260px; flex-shrink: 0; }
         .sidebar-box { background: white; padding: 20px; border-radius: 5px; border: 1px solid #ddd; position: sticky; top: 100px; }
@@ -37,8 +56,7 @@
         .enquiry-btn { background: #25d366; color: white; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: 0.3s; text-decoration: none; font-size: 14px; }
         .enquiry-btn:hover { background: #128c7e; transform: scale(1.02); }
 
-        .banner-row { max-width: 1200px; margin: 20px auto; padding: 0 15px; display: grid; gap: 20px; }
-        .small-banners { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .banner-row-small { max-width: 1200px; margin: 20px auto; padding: 0 15px; display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
         .banner-card { border-radius: 8px; overflow: hidden; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; }
         .banner-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -50,6 +68,8 @@
             aside { width: 100%; }
             .sidebar-box { position: static; }
             .top-bar { display: none; }
+            .banner-carousel { height: 300px; }
+            .carousel-overlay { padding: 20px; background: rgba(0,74,153,0.9); }
         }
     </style>
 </head>
@@ -68,20 +88,44 @@
         <div style="font-size: 12px; font-weight: bold; color: #004a99; border: 1px solid #004a99; padding: 5px 12px; border-radius: 20px;">WHOLESALE STORE</div>
     </header>
 
-    <section class="banner-row">
-        <div style="width: 100%; height: 350px;" class="banner-card">
-            <img src="https://images.unsplash.com/photo-1557597774-9d2739f85a76?auto=format&fit=crop&q=80&w=1200" alt="Main Banner">
-            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,74,153,0.8), transparent); display: flex; align-items: center; padding: 40px; color: white;">
-                <div>
-                    <h1 style="font-size: clamp(24px, 5vw, 36px); font-weight: 800; margin-bottom: 10px;">ADVANCED SECURITY SOLUTIONS</h1>
-                    <p style="font-size: 18px; margin-bottom: 20px;">Premium CCTV at SP Road Wholesale Prices.</p>
-                    <a href="#product-grid" style="background: #ff6600; color: white; text-decoration:none; padding: 12px 30px; border-radius: 5px; font-weight: bold; display:inline-block;">EXPLORE RANGE</a>
+    <!-- NEW CAROUSEL SLIDER BANNER -->
+    <section class="banner-carousel">
+        <div class="carousel-container">
+            <!-- Slide 1: General Branding -->
+            <div class="carousel-slide active">
+                <img src="https://images.unsplash.com/photo-1557597774-9d2739f85a76?auto=format&fit=crop&q=80&w=1200" alt="CCTV Solutions">
+                <div class="carousel-overlay">
+                    <div class="carousel-content">
+                        <span class="banner-badge">SP ROAD WHOLESALE PRICE</span>
+                        <h1>ADVANCED SECURITY SOLUTIONS</h1>
+                        <p>Premium CCTV, Biometrics & Smart Lock Systems for Home & Business Security.</p>
+                        <a href="#product-grid" class="banner-btn">EXPLORE RANGE</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Free Installation -->
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=1200" alt="Installation Support">
+                <div class="carousel-overlay" style="background: linear-gradient(to right, rgba(255, 102, 0, 0.85), transparent);">
+                    <div class="carousel-content">
+                        <span class="banner-badge" style="background: #004a99;">LIMITED TIME OFFER</span>
+                        <h1>FREE INSTALLATION SUPPORT 🛠️</h1>
+                        <p>Get professional zero-cost setup on a complete set of 4 or 8 Premium Security Cameras.</p>
+                        <a href="https://wa.me/919513533180" target="_blank" class="banner-btn" style="background: #004a99;">BOOK NOW</a>
+                    </div>
                 </div>
             </div>
         </div>
+        
+        <!-- Carousel Controls -->
+        <div class="carousel-dots">
+            <span class="dot active" onclick="switchSlide(0)"></span>
+            <span class="dot" onclick="switchSlide(1)"></span>
+        </div>
     </section>
 
-    <section class="banner-row small-banners">
+    <section class="banner-row-small">
         <div style="height: 160px; background: #004a99;" class="banner-card">
             <div style="padding: 25px; color: white;">
                 <h3>FREE INSTALLATION 🛠️</h3>
@@ -159,6 +203,7 @@
 
         let allProducts = [];
 
+        // Google Drive Asset Public Link Token Mapper
         function formatDriveImageUrl(url) {
             if (!url) return 'https://via.placeholder.com/200?text=No+Image';
             url = url.trim();
@@ -185,7 +230,7 @@
                     skipEmptyLines: true,
                     dynamicTyping: true,
                     complete: function(results) {
-                        // FIX 158: కేవలం ID మరియు Name రెండు పక్కాగా ఉన్న ప్రొడక్ట్స్ ని మాత్రమే తీసుకుంటుంది (null/empty rows ని వదిలేస్తుంది)
+                        // Filters empty rows safely
                         allProducts = results.data.filter(function(p) { 
                             return (p.ID || p.id) && (p.Name || p.name); 
                         });
@@ -211,7 +256,6 @@
                 const imgUrl = p.ImageURL || p.imageurl || p.Image || p.image || '';
                 const name = p.Name || p.name || 'Unnamed Product';
                 
-                // ఒకవేళ షీట్ లో కేటగిరీ ఖాళీగా ఉంటే 'GENERAL' కింద చూపిస్తుంది
                 let cat = p.Category || p.category || 'GENERAL';
                 cat = cat.toString().trim().toUpperCase();
                 
@@ -232,7 +276,6 @@
             }).join('');
         }
 
-        // FIX CATEGORY: కేటగిరీలు అన్నీ ఒకే ఫార్మాట్ లోకి మారి డూప్లికేట్స్ రాకుండా ఫిల్టర్ అవుతాయి
         function renderSidebar() {
             const list = document.getElementById('category-list');
             
@@ -258,6 +301,27 @@
             document.getElementById('item-total').innerText = filtered.length + " items";
         }
 
+        // CAROUSEL LOGIC RUNNER
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function switchSlide(index) {
+            if(!slides.length || !dots.length) return;
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function autoPlaySlides() {
+            if(!slides.length) return;
+            let nextSlide = (currentSlide + 1) % slides.length;
+            switchSlide(nextSlide);
+        }
+
+        setInterval(autoPlaySlides, 5000);
         fetchProducts();
     </script>
 </body>
