@@ -17,24 +17,32 @@
         .logo-img { height: 50px; width: auto; object-fit: contain; }
         .logo-text { font-size: 22px; font-weight: bold; color: #004a99; }
 
-        /* CAROUSEL BANNER STYLES */
-        .banner-carousel { max-width: 1200px; margin: 20px auto; padding: 0 15px; position: relative; height: 380px; overflow: hidden; }
-        .carousel-container { width: 100%; height: 100%; position: relative; border-radius: 8px; overflow: hidden; }
-        .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out; z-index: 1; }
+        /* PREMIUM CAROUSEL BANNER STYLES */
+        .banner-carousel { max-width: 1200px; margin: 20px auto; padding: 0 15px; position: relative; height: 400px; overflow: hidden; }
+        .carousel-container { width: 100%; height: 100%; position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+        .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out; z-index: 1; background-color: #011627; }
         .carousel-slide.active { opacity: 1; z-index: 2; }
-        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); }
         
-        .carousel-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,74,153,0.85), transparent); display: flex; align-items: center; padding: 40px; color: white; }
-        .carousel-content { max-width: 600px; }
-        .banner-badge { background: #ff6600; color: white; padding: 4px 12px; font-size: 11px; font-weight: bold; border-radius: 3px; display: inline-block; margin-bottom: 12px; letter-spacing: 1px; }
-        .carousel-content h1 { font-size: clamp(22px, 4vw, 36px); font-weight: 800; margin-bottom: 10px; line-height: 1.2; text-transform: uppercase; }
-        .carousel-content p { font-size: clamp(14px, 2vw, 18px); margin-bottom: 25px; opacity: 0.95; }
-        .banner-btn { background: #ff6600; color: white; text-decoration: none; padding: 12px 30px; border-radius: 4px; font-weight: bold; display: inline-block; transition: 0.3s; font-size: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .banner-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+        /* Glassmorphism Dark Overlay for Premium Look */
+        .carousel-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0, 32, 74, 0.9) 0%, rgba(0, 48, 110, 0.7) 50%, rgba(0,0,0,0.2) 100%); display: flex; align-items: center; padding: 50px; color: white; }
+        .carousel-content { max-width: 650px; animation: fadeInUp 0.8s ease-in-out; }
         
-        .carousel-dots { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
-        .dot { width: 10px; height: 10px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; transition: 0.3s; }
-        .dot.active { background: white; width: 24px; border-radius: 10px; }
+        .banner-badge { background: #ff6600; color: white; padding: 5px 14px; font-size: 11px; font-weight: bold; border-radius: 4px; display: inline-block; margin-bottom: 15px; letter-spacing: 1.2px; text-transform: uppercase; box-shadow: 0 2px 8px rgba(255,102,0,0.4); }
+        .carousel-content h1 { font-size: clamp(24px, 4.5vw, 40px); font-weight: 800; margin-bottom: 12px; line-height: 1.15; text-transform: uppercase; letter-spacing: 0.5px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .carousel-content p { font-size: clamp(14px, 2.2vw, 18px); margin-bottom: 30px; opacity: 0.9; line-height: 1.5; font-weight: 400; text-shadow: 0 1px 5px rgba(0,0,0,0.2); }
+        
+        .banner-btn { background: #ff6600; color: white; text-decoration: none; padding: 13px 35px; border-radius: 6px; font-weight: bold; display: inline-block; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); font-size: 14px; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(255,102,0,0.4); border: 2px solid transparent; }
+        .banner-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255,102,0,0.6); background: #e05500; }
+        
+        .carousel-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10; background: rgba(0,0,0,0.3); padding: 6px 12px; border-radius: 20px; backdrop-filter: blur(5px); }
+        .dot { width: 8px; height: 8px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; transition: all 0.3s ease; }
+        .dot.active { background: #ff6600; width: 24px; border-radius: 10px; box-shadow: 0 0 8px #ff6600; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         .main-container { display: flex; max-width: 1200px; margin: 20px auto; gap: 20px; padding: 0 15px; align-items: flex-start; }
         aside { width: 260px; flex-shrink: 0; }
@@ -68,8 +76,11 @@
             aside { width: 100%; }
             .sidebar-box { position: static; }
             .top-bar { display: none; }
-            .banner-carousel { height: 300px; }
-            .carousel-overlay { padding: 20px; background: rgba(0,74,153,0.9); }
+            .banner-carousel { height: 320px; padding: 0 10px; }
+            .carousel-overlay { padding: 25px; background: linear-gradient(to right, rgba(0, 32, 74, 0.95) 60%, rgba(0, 48, 110, 0.8)); }
+            .carousel-content h1 { font-size: 24px; }
+            .carousel-content p { margin-bottom: 20px; font-size: 13px; }
+            .banner-btn { padding: 10px 25px; font-size: 13px; }
         }
     </style>
 </head>
@@ -88,37 +99,37 @@
         <div style="font-size: 12px; font-weight: bold; color: #004a99; border: 1px solid #004a99; padding: 5px 12px; border-radius: 20px;">WHOLESALE STORE</div>
     </header>
 
-    <!-- NEW CAROUSEL SLIDER BANNER -->
+    <!-- PREMIUM NEW CAROUSEL SLIDER BANNER -->
     <section class="banner-carousel">
         <div class="carousel-container">
-            <!-- Slide 1: General Branding -->
+            <!-- Slide 1: High-Tech Security Focus (Fixed Image URL) -->
             <div class="carousel-slide active">
-                <img src="https://images.unsplash.com/photo-1557597774-9d2739f85a76?auto=format&fit=crop&q=80&w=1200" alt="CCTV Solutions">
+                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1200" alt="Advanced CCTV Surveillance">
                 <div class="carousel-overlay">
                     <div class="carousel-content">
                         <span class="banner-badge">SP ROAD WHOLESALE PRICE</span>
                         <h1>ADVANCED SECURITY SOLUTIONS</h1>
-                        <p>Premium CCTV, Biometrics & Smart Lock Systems for Home & Business Security.</p>
+                        <p>Specialized wholesale supplier of high-definition CCTV Systems, multi-spectral Biometrics & Smart Enterprise Infrastructure.</p>
                         <a href="#product-grid" class="banner-btn">EXPLORE RANGE</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 2: Free Installation -->
+            <!-- Slide 2: Free Installation Setup -->
             <div class="carousel-slide">
-                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=1200" alt="Installation Support">
-                <div class="carousel-overlay" style="background: linear-gradient(to right, rgba(255, 102, 0, 0.85), transparent);">
+                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=1200" alt="Professional Technician Installation">
+                <div class="carousel-overlay" style="background: linear-gradient(to right, rgba(0, 32, 74, 0.9) 0%, rgba(255, 102, 0, 0.4) 100%);">
                     <div class="carousel-content">
-                        <span class="banner-badge" style="background: #004a99;">LIMITED TIME OFFER</span>
+                        <span class="banner-badge" style="background: #004a99; box-shadow: 0 2px 8px rgba(0,74,153,0.4);">LIMITED TIME DEALS</span>
                         <h1>FREE INSTALLATION SUPPORT 🛠️</h1>
-                        <p>Get professional zero-cost setup on a complete set of 4 or 8 Premium Security Cameras.</p>
-                        <a href="https://wa.me/919513533180" target="_blank" class="banner-btn" style="background: #004a99;">BOOK NOW</a>
+                        <p>Maximize your security. Avail completely free professional onsite configuration on any purchase of 4 or 8 Camera Kits.</p>
+                        <a href="https://wa.me/919513533180" target="_blank" class="banner-btn" style="background: #004a99; box-shadow: 0 4px 15px rgba(0,74,153,0.4);">BOOK NOW VIA WHATSAPP</a>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Carousel Controls -->
+        <!-- Premium Slider Dots -->
         <div class="carousel-dots">
             <span class="dot active" onclick="switchSlide(0)"></span>
             <span class="dot" onclick="switchSlide(1)"></span>
@@ -203,7 +214,6 @@
 
         let allProducts = [];
 
-        // Google Drive Asset Public Link Token Mapper
         function formatDriveImageUrl(url) {
             if (!url) return 'https://via.placeholder.com/200?text=No+Image';
             url = url.trim();
@@ -230,7 +240,6 @@
                     skipEmptyLines: true,
                     dynamicTyping: true,
                     complete: function(results) {
-                        // Filters empty rows safely
                         allProducts = results.data.filter(function(p) { 
                             return (p.ID || p.id) && (p.Name || p.name); 
                         });
@@ -301,7 +310,7 @@
             document.getElementById('item-total').innerText = filtered.length + " items";
         }
 
-        // CAROUSEL LOGIC RUNNER
+        // CAROUSEL LOGIC
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
         const dots = document.querySelectorAll('.dot');
