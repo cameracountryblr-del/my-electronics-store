@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="te">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Country | CCTV & Electronics SP Road</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="description"
+        content="Camera Country - premium CCTV, biometrics and networking wholesale products on SP Road, Bangalore.">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+    <style>
+        :root {
+            --bg: #07131f;
+            --bg-soft: #0d1d2d;
+            --surface: rgba(10, 20, 33, 0.78);
+            --surface-strong: #0d1723;
+            --card: rgba(255, 255, 255, 0.92);
+            --text: #dbe7f3;
+            --muted: #8ea2b8;
+            --gold: #d8b46a;
+            --gold-strong: #f0c97d;
+            --line: rgba(255, 255, 255, 0.09);
+            --shadow: 0 24px 60px rgba(2, 8, 16, 0.32);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(216, 180, 106, 0.12), transparent 26%),
+                radial-gradient(circle at top right, rgba(72, 120, 176, 0.14), transparent 30%),
+                linear-gradient(180deg, #05111b 0%, #081624 100%);
+            color: #17314a;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 56px 56px;
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.18), transparent 76%);
+            z-index: 0;
+        }
+
+        body>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .top-bar {
+            background: linear-gradient(90deg, #08131d, #0b2238 52%, #111b27);
+            color: rgba(255, 255, 255, 0.86);
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px;
+            letter-spacing: 0.4px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        header {
+            background: rgba(8, 17, 28, 0.78);
+            backdrop-filter: blur(18px);
+            color: white;
+            padding: 14px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 14px 30px rgba(1, 8, 18, 0.24);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            color: var(--gold-strong);
+        }
+
+        .store-pill {
+            font-size: 11px;
+            font-weight: 700;
+            color: #eaf2fb;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        /* PREMIUM CAROUSEL BANNER STYLES */
+        .banner-carousel {
+            max-width: 1240px;
+            margin: 24px auto 18px;
+            padding: 0 15px;
+            position: relative;
+            height: 420px;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            z-index: 1;
+            background-color: #011627;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.72) saturate(1.1);
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(3, 8, 16, 0.88) 0%, rgba(8, 22, 34, 0.68) 42%, rgba(3, 8, 16, 0.14) 100%);
+            display: flex;
+            align-items: center;
+            padding: 54px;
+            color: white;
+        }
+
+        .carousel-content {
+            max-width: 660px;
+            animation: fadeInUp 0.8s ease-in-out;
+        }
+
+        .banner-badge {
+            background: linear-gradient(90deg, #c99d4d, #f0cf88);
+            color: #0d1522;
+            padding: 6px 14px;
+            font-size: 11px;
+            font-weight: 800;
+            border-radius: 999px;
+            display: inline-block;
+            margin-bottom: 18px;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 22px rgba(216, 180, 106, 0.18);
+        }
+
+        .carousel-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(30px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 0.95;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            text-shadow: 0 8px 28px rgba(0, 0, 0, 0.36);
+        }
+
+        .carousel-content p {
+            font-size: clamp(14px, 2.2vw, 18px);
+            margin-bottom: 30px;
+            opacity: 0.93;
+            line-height: 1.65;
+            font-weight: 400;
+            max-width: 52ch;
+            color: rgba(233, 243, 255, 0.92);
+        }
+
+        .banner-btn {
+            background: linear-gradient(135deg, #d8b46a, #f5d68d);
+            color: #0d1522;
+            text-decoration: none;
+            padding: 13px 34px;
+            border-radius: 999px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-size: 13px;
+            letter-spacing: 0.7px;
+            box-shadow: 0 14px 28px rgba(216, 180, 106, 0.22);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+        }
+
+        .banner-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 34px rgba(216, 180, 106, 0.32);
+            filter: brightness(1.02);
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+            background: rgba(4, 10, 16, 0.4);
+            padding: 8px 12px;
+            border-radius: 999px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.42);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--gold-strong);
+            width: 28px;
+            border-radius: 999px;
+            box-shadow: 0 0 10px rgba(240, 201, 125, 0.55);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-container {
+            max-width: 1240px;
+            margin: 22px auto;
+            padding: 0 15px;
+        }
+
+        .content-area {
+            width: 100%;
+        }
+
+        .catalog-panel {
+            background: rgba(255, 255, 255, 0.84);
+            backdrop-filter: blur(14px);
+            padding: 16px 18px 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(15, 31, 47, 0.08);
+            box-shadow: 0 18px 40px rgba(7, 20, 34, 0.08);
+        }
+
+        .catalog-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .category-strip {
+            margin-top: 14px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 2px 2px 12px;
+            margin-bottom: 6px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(240, 201, 125, 0.7) transparent;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            scroll-snap-type: x proximity;
+            border-top: 2px solid rgba(13, 42, 72, .08);
+            padding-top: 16px;
+            /* mask-image: linear-gradient(to right, transparent 0, #000 1%, #000 99%, transparent 100%); */
+        }
+
+        .category-strip::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .category-strip::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .category-strip::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, rgba(13, 42, 72, 0.24), rgba(240, 201, 125, 0.85));
+            border-radius: 999px;
+            border: 2px solid rgba(255, 255, 255, 0.78);
+        }
+
+        .cat-item {
+            flex: 0 0 auto;
+            padding: 10px 16px;
+            border: 1px solid rgba(15, 31, 47, 0.10);
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 999px;
+            cursor: pointer;
+            color: #45607a;
+            list-style: none;
+            transition: 0.2s;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.9px;
+            font-weight: 700;
+            white-space: nowrap;
+            box-shadow: 0 8px 18px rgba(7, 20, 34, 0.05);
+            scroll-snap-align: start;
+        }
+
+        .cat-item:hover,
+        .cat-item.active {
+            color: #0c2340;
+            border-color: rgba(13, 42, 72, 0.28);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(7, 20, 34, 0.08);
+        }
+
+        .cat-item .cat-count {
+            margin-left: 8px;
+            color: #8a97a6;
+            font-weight: 800;
+        }
+
+        .grid-header {
+            background: transparent;
+            backdrop-filter: none;
+            padding: 0;
+            border-radius: 0;
+            border: none;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            /* box-shadow: 0 18px 40px rgba(7, 20, 34, 0.08); */
+        }
+
+        .grid-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .search-box {
+            flex: 1 1 320px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(15, 31, 47, 0.1);
+            border-radius: 999px;
+            padding: 12px 16px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+        }
+
+        .search-box span {
+            color: #7d8fa3;
+            font-size: 14px;
+        }
+
+        #item-total {
+            background: #eef3f8;
+            color: #17314a;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .search-input {
+            border: none;
+            outline: none;
+            width: 100%;
+            background: transparent;
+            font: inherit;
+            color: #17314a;
+        }
+
+        .search-input::placeholder {
+            color: #8ea2b8;
+        }
+
+        .search-clear {
+            border: none;
+            background: transparent;
+            color: #8b98a6;
+            font-weight: 800;
+            cursor: pointer;
+            padding: 0 4px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(15, 31, 47, 0.08);
+            border-radius: 22px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            height: 100%;
+            box-shadow: 0 18px 40px rgba(7, 20, 34, 0.08);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 54px rgba(7, 20, 34, 0.14);
+            border-color: rgba(216, 180, 106, 0.5);
+        }
+
+        .img-container {
+            height: 220px;
+            background: linear-gradient(180deg, #ffffff, #f6f8fb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            border-bottom: 1px solid rgba(15, 31, 47, 0.06);
+        }
+
+        .img-container img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .card-info {
+            padding: 16px 16px 18px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-price {
+            font-size: 22px;
+            color: #0d2a48;
+            font-weight: 800;
+            margin: 10px 0 14px;
+        }
+
+        .enquiry-btn {
+            background: linear-gradient(135deg, #0f7a4b, #20b46b);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 800;
+            transition: 0.3s;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 0.4px;
+            box-shadow: 0 14px 26px rgba(16, 129, 81, 0.18);
+        }
+
+        .enquiry-btn:hover {
+            background: linear-gradient(135deg, #0d6d43, #18965a);
+            transform: translateY(-1px);
+        }
+
+        .banner-row-small {
+            max-width: 1240px;
+            margin: 18px auto;
+            padding: 0 15px;
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .banner-card {
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 14px 30px rgba(7, 20, 34, 0.12);
+            transition: 0.3s;
+        }
+
+        .banner-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* .social-icon {
+            text-decoration: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        } */
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all .3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .18);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
+        }
+
+        .loading-state {
+            padding: 34px 18px;
+            text-align: center;
+            color: #6f8296;
+            font-weight: 600;
+        }
+
+        .scroll-sentinel {
+            height: 1px;
+            width: 100%;
+        }
+
+        .product-meta {
+            font-size: 10px;
+            color: #8a97a6;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .product-name {
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.45;
+            min-height: 42px;
+            color: #11253b;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                margin-top: 14px;
+            }
+
+            .top-bar {
+                display: none;
+            }
+
+            .banner-carousel {
+                height: 330px;
+                padding: 0 10px;
+            }
+
+            .carousel-overlay {
+                padding: 24px;
+                background: linear-gradient(to right, rgba(3, 8, 16, 0.94) 58%, rgba(6, 18, 31, 0.72));
+            }
+
+            .carousel-content h1 {
+                font-size: 28px;
+            }
+
+            .carousel-content p {
+                margin-bottom: 20px;
+                font-size: 13px;
+            }
+
+            .banner-btn {
+                padding: 11px 22px;
+                font-size: 12px;
+            }
+
+            .store-pill {
+                display: none;
+            }
+
+            .search-box {
+                flex-basis: 100%;
+            }
+
+            .product-grid {
+                margin-top: 16px;
+            }
+        }
+
+        footer a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color .25s ease;
+        }
+
+        footer a:hover {
+            color: #f0cf88;
+        }
+
+        .top-bar a {
+            color: inherit;
+            text-decoration: none;
+            transition: color .25s ease;
+        }
+
+        .top-bar a:hover {
+            color: #f0cf88;
+        }
+
+        #topBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background: #0d2a48;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 999;
+            /* box-shadow: 0 4px 10px rgba(0, 0, 0, .3); */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
+            transition: all .3s ease;
+        }
+
+        #topBtn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 10px rgba(216, 180, 106, .4);
+            background: #d8b46a;
+            color: #000;
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1F82Q271H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-B1F82Q271H');
+    </script>
+
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <span>Authorized CCTV & Biometrics Dealer</span>
+        <!-- <span>📞 +91 95135 33180 | 📍 SP Road, Bangalore</span> -->
+        <span>
+            📞
+            <a href="tel:+919513533180">
+                +91 95135 33180
+            </a>
+
+            &nbsp;|&nbsp;
+
+            📍
+            <a href="https://maps.google.com/?q=CAMERA%20COUNTRY" target="_blank">
+                SP Road, Bangalore
+            </a>
+        </span>
+    </div>
+
+    <header>
+        <a href="/" class="logo">
+            <img src="logo.png" alt="Logo" class="logo-img">
+            <div class="logo-text">CAMERA <span>COUNTRY</span></div>
+        </a>
+        <div class="store-pill">CCTV • Biometrics • Networking</div>
+    </header>
+
+    <!-- PREMIUM NEW CAROUSEL SLIDER BANNER -->
+    <section class="banner-carousel">
+        <div class="carousel-container">
+            <!-- Slide 1: High-Tech Security Focus (Fixed Image URL) -->
+            <div class="carousel-slide active">
+                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1200"
+                    alt="Advanced CCTV Surveillance">
+                <div class="carousel-overlay">
+                    <div class="carousel-content">
+                        <span class="banner-badge">SP ROAD WHOLESALE PRICE</span>
+                        <h1>ADVANCED SECURITY SOLUTIONS</h1>
+                        <p>Specialized wholesale supplier of high-definition CCTV Systems, multi-spectral Biometrics &
+                            Smart Enterprise Infrastructure.</p>
+                        <a href="#product-grid" class="banner-btn">EXPLORE RANGE</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Free Installation Setup -->
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=1200"
+                    alt="Professional Technician Installation">
+                <div class="carousel-overlay"
+                    style="background: linear-gradient(to right, rgba(0, 32, 74, 0.9) 0%, rgba(255, 102, 0, 0.4) 100%);">
+                    <div class="carousel-content">
+                        <span class="banner-badge"
+                            style="background: #004a99; box-shadow: 0 2px 8px rgba(0,74,153,0.4);">LIMITED TIME
+                            DEALS</span>
+                        <h1>ATTRACTIVE CORPORATE PRICING</h1>
+                        <p>Maximize your security. Avail completely attractive corporate pricing on bulk purchases.</p>
+                        <a href="https://wa.me/919513533180" target="_blank" class="banner-btn"
+                            style="background: #004a99; box-shadow: 0 4px 15px rgba(0,74,153,0.4);">ENQUIRE NOW VIA
+                            WHATSAPP</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Premium Slider Dots -->
+        <div class="carousel-dots">
+            <span class="dot active" onclick="switchSlide(0)"></span>
+            <span class="dot" onclick="switchSlide(1)"></span>
+        </div>
+    </section>
+
+    <section class="banner-row-small">
+        <div style="height: 160px; background: linear-gradient(135deg, #0b3a66, #0d1f31);" class="banner-card">
+            <div style="padding: 25px; color: white;">
+                <h3>EXPERT SUPPORT &nbsp;<i class="fa-solid fa-shield-halved"></i></h3>
+                <p style="opacity: 0.9; font-size: 14px; margin-top: 8px;">
+                    Pre & post sales guidance for all your security needs.
+                </p>
+                <div
+                    style="margin-top: 15px; font-size: 12px; font-weight: bold; background: rgba(255,255,255,0.2); display: inline-block; padding: 4px 12px; border-radius: 4px;">
+                    CONTACT US
+                </div>
+            </div>
+        </div>
+
+        <div style="height: 160px; background: linear-gradient(135deg, #8e5f17, #d8b46a);" class="banner-card">
+            <div style="padding: 25px; color: white;">
+                <h3>QUOTATION BUILDER &nbsp;<i class="fa-solid fa-file-invoice-dollar"></i></h3>
+                <p style="opacity: 0.9; font-size: 14px; margin-top: 8px;">
+                    Build your requirement & get a customized quotation.
+                </p>
+                <div
+                    style="margin-top: 15px; font-size: 12px; font-weight: bold; background: rgba(0,0,0,0.1); display: inline-block; padding: 4px 12px; border-radius: 4px;">
+                    BUILD QUOTE
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-container">
+        <div class="content-area">
+            <div class="catalog-panel">
+                <div class="grid-header">
+                    <div class="grid-toolbar">
+                        <h2 id="category-name"
+                            style="font-size: 18px; color: #0d2a48; text-transform: uppercase; letter-spacing: 0.8px; min-width: 180px;">
+                            ALL PRODUCTS</h2>
+                        <div class="search-box">
+                            <span>⌕</span>
+                            <input id="product-search" class="search-input" type="search"
+                                placeholder="Search products, brands, categories..." autocomplete="off">
+                            <button id="search-clear" class="search-clear" type="button"
+                                aria-label="Clear search">×</button>
+                        </div>
+                    </div>
+                    <span id="item-total" style="color:#777; font-size:13px; font-weight:bold; white-space: nowrap;">0
+                        items</span>
+                </div>
+                <div id="category-list" class="category-strip">
+                    <li class="cat-item active" onclick="filterProducts('all')">All Products</li>
+                </div>
+            </div>
+            <div id="product-grid" class="product-grid">
+                <div class="loading-state">Loading curated catalog...</div>
+            </div>
+            <div id="scroll-sentinel" class="scroll-sentinel"></div>
+        </div>
+    </div>
+
+    <footer
+        style="background: linear-gradient(180deg, #08131d, #040b12); color: white; padding: 60px 5% 20px; margin-top: 50px; font-family: 'Inter', sans-serif;">
+        <div
+            style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+            <div>
+                <h3 style="color: #f0cf88; font-size: 24px; margin-bottom: 15px; letter-spacing: 0.5px;">CAMERA COUNTRY
+                </h3>
+                <p style="font-size: 14px; line-height: 1.6; color: #bbb; margin-bottom: 20px;">
+                    Specialists in CCTV, Biometrics, and Networking Solutions. Authorised Dealer in SP Road, Bangalore.
+                </p>
+                <!-- <div style="display: flex; gap: 12px;">
+                    <a href="#" class="social-icon" style="background: #3b5998;">f</a>
+                    <a href="#" class="social-icon" style="background: #e4405f;">ig</a>
+                    <a href="https://wa.me/919513533180" class="social-icon" style="background: #25d366;">wa</a>
+                </div> -->
+                <div style="display: flex; gap: 12px;">
+                    <a href="https://facebook.com/1091735764020521/" target="_blank" class="social-icon"
+                        style="background:#3b5998;" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://instagram.com/cameracountryblr1" target="_blank" class="social-icon"
+                        style="background:#e4405f;" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="https://wa.me/919513533180" target="_blank" class="social-icon" style="background:#25d366;"
+                        aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- <div>
+                <h4 style="margin-bottom: 20px; border-left: 3px solid #f0cf88; padding-left: 10px;">Contact Details
+                </h4>
+                <p style="font-size: 14px; color: #bbb; line-height: 1.8;">
+                    📍 GROUND FLOOR, NO.8, 1ST CROSS ROAD, <br>P.V.N.LANE, THIGALARPET, S.P ROAD, <br>BANGALORE - 560002
+                </p>
+                <p style="font-size: 14px; color: #bbb; margin-top: 10px;">📞 +91 95135 33180</p>
+                <p style="font-size: 14px; color: #bbb;">✉️ cameracountryblr@gmail.com</p>
+            </div> -->
+
+            <div>
+                <h4 style="margin-bottom: 20px; border-left: 3px solid #f0cf88; padding-left: 10px;">
+                    Contact Details
+                </h4>
+
+                <p style="font-size: 14px; color: #bbb; line-height: 1.8;">
+                    📍
+                    <a href="https://maps.google.com/?q=CAMERA%20COUNTRY" target="_blank"
+                        style="color:#bbb; text-decoration:none;">
+                        GROUND FLOOR, NO.8, 1ST CROSS ROAD,<br>
+                        P.V.N. LANE, THIGALARPET, S.P ROAD,<br>
+                        BANGALORE - 560002
+                    </a>
+                </p>
+
+                <p style="font-size:14px; margin-top:10px;">
+                    📞
+                    <a href="tel:+919513533180" style="color:#bbb; text-decoration:none;">
+                        +91 95135 33180
+                    </a>
+                </p>
+
+                <p style="font-size:14px;">
+                    ✉️
+                    <a href="mailto:cameracountryblr@gmail.com?subject=Product%20Enquiry"
+                        style="color:#bbb; text-decoration:none;">
+                        cameracountryblr@gmail.com
+                    </a>
+                </p>
+            </div>
+
+            <div>
+                <h4 style="margin-bottom: 20px; border-left: 3px solid #f0cf88; padding-left: 10px;">Business Hours</h4>
+                <p style="font-size: 14px; color: #bbb; line-height: 2;">
+                    Monday - Saturday: 10:30 AM - 8:30 PM<br>
+                    Sunday: Holiday (Support on WhatsApp)
+                </p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px; border-top: 1px solid #333; padding-top: 20px;">
+            <p style="font-size: 13px; color: #777;">
+                &copy; 2026 <strong>Camera Country</strong>. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+    <button id="topBtn" onclick="scrollToTop()">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+        const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT9BMeV7ru67VCJZ2W6gcVSKDbHvJPOFeOopi5dQRYtfU2yCSJQoJDXWXKCHKRAb3wOjW5ZzUS1Rfdp/pub?output=csv';
+        const MY_PHONE_NUMBER = '919513533180';
+        const INITIAL_BATCH_SIZE = 18;
+        const BATCH_SIZE = 24;
+
+        let allProducts = [];
+        let visibleProducts = [];
+        let activeCategory = 'all';
+        let searchQuery = '';
+        let renderToken = 0;
+        let categoryMap = new Map();
+        let visibleCount = 0;
+        let infiniteObserver = null;
+        let searchDebounce = null;
+
+        function formatDriveImageUrl(url) {
+            if (!url) return 'https://via.placeholder.com/200?text=No+Image';
+            url = url.trim();
+            if (url.includes('drive.google.com')) {
+                let fileId = "";
+                if (url.includes('/d/')) {
+                    fileId = url.split('/d/')[1].split('/')[0];
+                } else if (url.includes('id=')) {
+                    fileId = url.split('id=')[1].split('&')[0];
+                }
+                if (fileId) {
+                    return 'https://lh3.googleusercontent.com/d/' + fileId + '=w400';
+                }
+            }
+            return url;
+        }
+
+        function normalizeCategory(p) {
+            const c = p.Category || p.category;
+            return c ? c.toString().trim().toUpperCase() : 'GENERAL';
+        }
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function sendEnquiry(name, price) {
+            const cleanPrice = price && String(price).trim() && String(price).trim() !== 'Contact' ? String(price).trim() : '';
+            const message = encodeURIComponent('Hi Camera Country,\nI am interested in ' + name + (cleanPrice ? ' | Price: ' + cleanPrice : ''));
+            window.open('https://wa.me/' + MY_PHONE_NUMBER + '?text=' + message, '_blank');
+        }
+
+        function createProductCard(p) {
+            const imgUrl = p.ImageURL || p.imageurl || p.Image || p.image || '';
+            const name = p.Name || p.name || 'Unnamed Product';
+            const category = normalizeCategory(p);
+            const price = p.Price || p.price || '';
+            const displayPrice = price ? (price.toString().includes('/-') ? price : '₹' + Number(price).toLocaleString('en-IN')) : 'Contact';
+            const safeName = escapeHtml(name);
+            const safeCategory = escapeHtml(category);
+
+            return '<div class="card">' +
+                '<div class="img-container">' +
+                '<img loading="lazy" decoding="async" src="' + escapeHtml(formatDriveImageUrl(imgUrl)) + '" alt="' + safeName + '" onerror="this.src=\'https://via.placeholder.com/200?text=Image+Error\'">' +
+                '</div>' +
+                '<div class="card-info">' +
+                '<div class="product-meta">' + safeCategory + '</div>' +
+                '<div class="product-name">' + safeName + '</div>' +
+                '<div class="card-price">' + escapeHtml(displayPrice) + '</div>' +
+                '<button class="enquiry-btn" onclick=\'sendEnquiry(' + JSON.stringify(String(name)) + ', ' + JSON.stringify(String(price)) + ')\'>ENQUIRY ON WHATSAPP 📲</button>' +
+                '</div>' +
+                '</div>';
+        }
+
+        async function fetchProducts() {
+            try {
+                const response = await fetch(SHEET_CSV_URL + '&v=' + new Date().getTime());
+                const csvData = await response.text();
+                Papa.parse(csvData, {
+                    header: true,
+                    skipEmptyLines: true,
+                    dynamicTyping: true,
+                    complete: function (results) {
+                        // allProducts = results.data.filter(function (p) {
+                        //     return (p.ID || p.id) && (p.Name || p.name);
+                        // });
+
+                        // visibility filtering is disabled for now, as per your request. If you want to enable it, uncomment the following block and comment out the above filter.
+
+                        allProducts = results.data.filter(function (p) {
+
+                            const isVisible =
+                                p.Visible === true ||
+                                String(p.Visible).toUpperCase() === "TRUE" ||
+                                String(p.Visible).toUpperCase() === "YES" ||
+                                String(p.Visible) === "1";
+
+                            return (p.ID || p.id) &&
+                                (p.Name || p.name) &&
+                                isVisible;
+                        });
+
+
+                        categoryMap = new Map();
+                        allProducts.forEach(function (product) {
+                            const category = normalizeCategory(product);
+                            categoryMap.set(category, (categoryMap.get(category) || 0) + 1);
+                        });
+
+                        if (allProducts.length === 0) {
+                            document.getElementById('product-grid').innerHTML = "No active products found in the sheet.";
+                            return;
+                        }
+                        document.getElementById('item-total').innerText = allProducts.length + " items";
+                        renderSidebar();
+                        bindSearch();
+                        applyFilters();
+                    }
+                });
+            } catch (e) {
+                console.error(e);
+                document.getElementById('product-grid').innerHTML = "Error loading products from Google Sheets.";
+            }
+        }
+
+        function bindSearch() {
+            const searchInput = document.getElementById('product-search');
+            const clearButton = document.getElementById('search-clear');
+
+            if (!searchInput || searchInput.dataset.bound === 'true') return;
+            searchInput.dataset.bound = 'true';
+
+            searchInput.addEventListener('input', function (event) {
+                clearTimeout(searchDebounce);
+                searchDebounce = setTimeout(function () {
+                    searchQuery = event.target.value.trim();
+                    applyFilters();
+                }, 120);
+            });
+
+            clearButton.addEventListener('click', function () {
+                searchInput.value = '';
+                searchQuery = '';
+                applyFilters();
+                searchInput.focus();
+            });
+        }
+
+        function getFilteredProducts() {
+            let filtered = activeCategory === 'all' ? allProducts.slice() : allProducts.filter(function (product) {
+                return normalizeCategory(product) === activeCategory;
+            });
+
+            if (searchQuery) {
+                const query = searchQuery.toLowerCase();
+                filtered = filtered.filter(function (product) {
+                    const name = (product.Name || product.name || '').toString().toLowerCase();
+                    const category = normalizeCategory(product.Category).toLowerCase();
+                    const price = (product.Price || product.price || '').toString().toLowerCase();
+                    return name.includes(query) || category.includes(query) || price.includes(query);
+                });
+            }
+
+            return filtered;
+        }
+
+        function applyFilters() {
+            visibleProducts = getFilteredProducts();
+            visibleCount = 0;
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = visibleProducts.length ? '' : '<div class="loading-state">No products match your search.</div>';
+            document.getElementById('category-name').innerText = activeCategory === 'all' ? 'ALL PRODUCTS' : activeCategory;
+            document.getElementById('item-total').innerText = visibleProducts.length + ' items';
+            if (visibleProducts.length) {
+                appendNextBatch();
+            }
+            setupInfiniteScroll();
+        }
+
+        function appendNextBatch() {
+            const grid = document.getElementById('product-grid');
+            if (!visibleProducts.length || visibleCount >= visibleProducts.length) {
+                disconnectInfiniteScroll();
+                return;
+            }
+
+            const fragment = document.createDocumentFragment();
+            const token = ++renderToken;
+            const batchLimit = visibleCount === 0 ? INITIAL_BATCH_SIZE : BATCH_SIZE;
+            const end = Math.min(visibleCount + batchLimit, visibleProducts.length);
+
+            for (; visibleCount < end; visibleCount++) {
+                const wrapper = document.createElement('div');
+                wrapper.innerHTML = createProductCard(visibleProducts[visibleCount]);
+                fragment.appendChild(wrapper.firstElementChild);
+            }
+
+            if (token === renderToken) {
+                grid.appendChild(fragment);
+            }
+
+            if (visibleCount >= visibleProducts.length) {
+                disconnectInfiniteScroll();
+            }
+        }
+
+        function setupInfiniteScroll() {
+            const sentinel = document.getElementById('scroll-sentinel');
+            if (!sentinel || !('IntersectionObserver' in window)) return;
+
+            if (infiniteObserver) {
+                infiniteObserver.disconnect();
+            }
+
+            infiniteObserver = new IntersectionObserver(function (entries) {
+                if (entries.some(function (entry) { return entry.isIntersecting; })) {
+                    appendNextBatch();
+                }
+            }, {
+                root: null,
+                rootMargin: '250px 0px',
+                threshold: 0.01
+            });
+
+            if (visibleCount < visibleProducts.length) {
+                infiniteObserver.observe(sentinel);
+            }
+        }
+
+        function disconnectInfiniteScroll() {
+            if (infiniteObserver) {
+                infiniteObserver.disconnect();
+            }
+        }
+
+        function renderSidebar() {
+            const list = document.getElementById('category-list');
+
+            const rawCats = allProducts.map(function (p) {
+                return normalizeCategory(p);
+            });
+            const cats = [...new Set(rawCats)];
+
+            list.innerHTML = '<li class="cat-item active" onclick="filterProducts(\'all\')">All Products</li>';
+            cats.forEach(function (c) {
+                if (c) list.innerHTML += '<li class="cat-item" onclick="filterProducts(\'' + c + '\')">' + c + '<span class="cat-count">' + (categoryMap.get(c) || 0) + '</span></li>';
+            });
+        }
+
+        function filterProducts(cat) {
+            activeCategory = cat === 'all' ? 'all' : cat.toUpperCase();
+            document.querySelectorAll('.cat-item').forEach(function (item) {
+                item.classList.toggle('active', item.textContent.trim().toUpperCase().startsWith(activeCategory === 'all' ? 'ALL PRODUCTS' : activeCategory));
+            });
+            applyFilters();
+        }
+
+        // CAROUSEL LOGIC
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function switchSlide(index) {
+            if (!slides.length || !dots.length) return;
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function autoPlaySlides() {
+            if (!slides.length) return;
+            let nextSlide = (currentSlide + 1) % slides.length;
+            switchSlide(nextSlide);
+        }
+
+        setInterval(autoPlaySlides, 5000);
+        fetchProducts();
+
+        // Back to Top Button Logic
+
+        const topBtn = document.getElementById("topBtn");
+
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 300) {
+                topBtn.style.display = "block";
+            } else {
+                topBtn.style.display = "none";
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>
