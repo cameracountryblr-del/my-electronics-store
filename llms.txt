@@ -1,8 +1,8 @@
 # Camera Country
 
-Camera Country is a CCTV and Networking equipment supplier located in Bangalore.
+> Camera Country is a CCTV and Networking equipment supplier located in Bangalore, India.
 
-Products
+## Products
 
 - CCTV Cameras
 - DVR
@@ -12,7 +12,7 @@ Products
 - PoE Switches
 - Routers
 
-Brands
+## Brands
 
 - Hikvision
 - CP Plus
@@ -21,16 +21,18 @@ Brands
 - TP-Link
 - Trueview
 
-Website
+## Website
 
-https://www.cameracountry.in
+- https://www.cameracountry.in
 
-Location
+## Location
 
-SP Road
-Bangalore
-India
+- SP Road, Bangalore, India
 
-Contact
+## Contact
 
-+91 9513533180
+- +91 9513533180
+
+## Full Knowledge Base
+
+- [llms-full.txt](llms-full.txt)
